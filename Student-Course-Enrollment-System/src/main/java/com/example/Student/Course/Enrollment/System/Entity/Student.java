@@ -1,31 +1,29 @@
-import jakarta.persistence.Id;
+package com.example.Student.Course.Enrollment.System.Entity;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
+@Table(name = "students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @Column(nullable = false)
     private String fullName;
 
-    @Email
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     private String phoneNumber;
-
     private LocalDate registrationDate;
+    private boolean isDeleted = false;
 
     @ManyToMany(mappedBy = "students")
-    private Set<Course> courses = new HashSet<>();
+    private List<Course> courses;
 
-    // Getters and Setters
+    // Getters and setters
 }

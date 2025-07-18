@@ -1,7 +1,8 @@
-package com.example.Student.Course.Enrollment.System.Entity;
+import jakarta.persistence.Id;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +23,7 @@ public class Student {
     private String phoneNumber;
 
     private LocalDate registrationDate;
+
     @ManyToMany(mappedBy = "students")
     private Set<Course> courses = new HashSet<>();
 

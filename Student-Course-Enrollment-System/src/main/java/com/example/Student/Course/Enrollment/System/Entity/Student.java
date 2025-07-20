@@ -6,8 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "students")
-public class Student {
+ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,10 +19,8 @@ public class Student {
 
     private String phoneNumber;
     private LocalDate registrationDate;
-    private boolean isDeleted = false;
+    private boolean isDeleted = false;//A soft delete means the record is not physically removed from the database
 
     @ManyToMany(mappedBy = "students")
     private List<Course> courses;
-
-    // Getters and setters
 }
